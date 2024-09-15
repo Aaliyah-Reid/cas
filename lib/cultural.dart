@@ -11,13 +11,15 @@ class CulturalToolkitPage extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        title: Center(
-          child: Text(
+        centerTitle: true,
+        title: 
+          Text(
             'Cultural Toolkit',
             style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
           ),
         ),
-      ),
+        
+    
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
