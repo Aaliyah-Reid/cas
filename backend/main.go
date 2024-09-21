@@ -39,7 +39,6 @@ func main() {
 		resp, err := http.Get(endpoint)
 
 		if err == nil {
-
 			defer resp.Body.Close()
 
 			data, err1 := io.ReadAll((resp.Body))

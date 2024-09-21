@@ -1,11 +1,18 @@
-import 'package:cas/home.dart';
+import 'dart:ffi';
+
+import 'package:cas/chat.dart';
+import 'package:cas/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:cas/onboarding.dart';
-import 'package:cas/cultural.dart';
-import 'package:cas/practice.dart';
+import 'package:cas/auth/auth.dart';
+import 'package:get_it/get_it.dart';
+import 'package:toastification/toastification.dart';
 
-void main() {
+final getIt = GetIt.instance;
+
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
@@ -15,7 +22,15 @@ void main() {
         systemNavigationBarIconBrightness: Brightness.dark,
         statusBarIconBrightness: Brightness.dark,
       ));
+
+  await register();
+    
   runApp(const MyApp());
+}
+
+Future<void> register() async{ 
+    GetIt.I.registerSingleton<Auth>(Auth());
+    GetIt.I.get<Auth>().init();
 }
 
 class MyApp extends StatelessWidget {
@@ -23,15 +38,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: 'CAS',
-        theme: ThemeData(
-
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-        home: HomePage()
+    return ToastificationWrapper(
+      child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'CAS',
+          theme: ThemeData(
+      
+            colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+            useMaterial3: true,
+          ),
+          home: ChatPage()
+      ),
     );
   }
 }
