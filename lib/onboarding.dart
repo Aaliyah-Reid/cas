@@ -111,6 +111,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
         child: Text(currentIndex == controller.items.length -1? "Get started with CAS" : "Continue",
           style: const TextStyle(color: Colors.white),),
       ),
+      
     );
   }
 }

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:cas/home.dart';
 class PracticePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -222,6 +222,38 @@ class PracticePage extends StatelessWidget {
           ),
         ),
       ),
+      bottomNavigationBar: BottomAppBar(
+  child: Container(
+    height: 60.0,
+    decoration: BoxDecoration(
+      color: Colors.blue[700],
+      borderRadius: BorderRadius.circular(30.0),
+    ),
+    child: Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: <Widget>[
+        IconButton(
+          icon: Icon(Icons.home, color: Colors.white),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => HomePage()),
+            );
+          },
+        ),
+        IconButton(
+          icon: Icon(Icons.chat, color: Colors.white),
+          onPressed: () {
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(builder: (context) => ChatPage()),
+            // );
+          },
+        ),
+      ],
+    ),
+  ),
+),
     );
   }
 }
