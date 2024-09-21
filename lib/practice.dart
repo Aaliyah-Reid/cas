@@ -1,3 +1,4 @@
+import 'package:cas/chat.dart';
 import 'package:flutter/material.dart';
 import 'package:cas/home.dart';
 class PracticePage extends StatelessWidget {
@@ -11,7 +12,7 @@ class PracticePage extends StatelessWidget {
             Navigator.of(context).pop();
           },
         ),
-        title: Text('Practice',
+        title: const Text('Practice',
         style:TextStyle(fontWeight:FontWeight.bold)),
         centerTitle: true,
       ),
@@ -57,7 +58,7 @@ class PracticePage extends StatelessWidget {
                       child: Text(
                         'One-on-One',
                         style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 15,
                             fontWeight: FontWeight.bold,
                             color: Colors.white),
                       ),
@@ -73,10 +74,10 @@ class PracticePage extends StatelessWidget {
                           borderRadius: BorderRadius.circular(30.0),
                         ),
                       ),
-                      child: Text(
+                      child: const Text(
                         'Group',
                         style: TextStyle(
-                            fontSize: 20,
+                            fontSize: 15,
                             fontWeight: FontWeight.bold,
                             color: Colors.white),
                       ),
@@ -84,26 +85,30 @@ class PracticePage extends StatelessWidget {
                   ),
                 ],
               ),
-              SizedBox(height: 30),
-              Center(
+             const  SizedBox(height: 30),
+              const Center(
                 child: Text(
                   'Situation',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Center(
                 child: SizedBox(
                   width: 400, // Set the desired width here
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      //Go to chat page with 
+                      //meeting with friend scenario
+                      Navigator.push(context,MaterialPageRoute(builder: (context)=>const ChatPage(msgContext: "Meeting with a friend",)));
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color.fromARGB(255, 100, 245, 141),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.0),
                       ),
                     ),
-                    child: Text(
+                    child: const  Text(
                       "Meeting with a friend",
                       style: TextStyle(
                         fontSize: 20,
@@ -114,19 +119,22 @@ class PracticePage extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Center(
                 child: SizedBox(
                   width: 400, // Set the desired width here
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context,MaterialPageRoute(builder: (context)=>const ChatPage(msgContext: "Attending a club meeting",)));
+
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color.fromARGB(255, 132, 210, 246),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.0),
                       ),
                     ),
-                    child: Text(
+                    child: const Text(
                       "Attending a Club Meeting",
                       style: TextStyle(
                         fontSize: 20,
@@ -142,14 +150,17 @@ class PracticePage extends StatelessWidget {
                 child: SizedBox(
                   width: 400, // Set the desired width here
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context,MaterialPageRoute(builder: (context)=>const ChatPage(msgContext: "Job interview",)));
+
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color.fromARGB(255, 0, 196, 203),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.0),
                       ),
                     ),
-                    child: Text(
+                    child: const Text(
                       "Job Interview",
                       style: TextStyle(
                         fontSize: 20,
@@ -165,14 +176,17 @@ class PracticePage extends StatelessWidget {
                 child: SizedBox(
                   width: 400, // Set the desired width here
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(context,MaterialPageRoute(builder: (context)=>const ChatPage(msgContext: "Making an order",)));
+
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Color.fromARGB(255, 100, 245, 141),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30.0),
                       ),
                     ),
-                    child: Text(
+                    child: const Text(
                       "Making an Order",
                       style: TextStyle(
                         fontSize: 20,
@@ -196,28 +210,28 @@ class PracticePage extends StatelessWidget {
                 ),
               ),
               SizedBox(height: 20),
-              Center(
-                child: SizedBox(
-                  width: 300, // Set the desired width here
-                  child: ElevatedButton(
-                    onPressed: () {},
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.blue[700],
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                    ),
-                    child: Text(
-                      "Let's Practise!",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.white,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              // Center(
+              //   child: SizedBox(
+              //     width: 300, // Set the desired width here
+              //     child: ElevatedButton(
+              //       onPressed: () {},
+              //       style: ElevatedButton.styleFrom(
+              //         backgroundColor: Colors.blue[700],
+              //         shape: RoundedRectangleBorder(
+              //           borderRadius: BorderRadius.circular(30.0),
+              //         ),
+              //       ),
+              //       child: Text(
+              //         "Let's Practise!",
+              //         style: TextStyle(
+              //           fontSize: 20,
+              //           fontWeight: FontWeight.bold,
+              //           color: Colors.white,
+              //         ),
+              //       ),
+              //     ),
+              //   ),
+              // ),
             ],
           ),
         ),
@@ -233,7 +247,7 @@ class PracticePage extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: <Widget>[
         IconButton(
-          icon: Icon(Icons.home, color: Colors.white),
+          icon: const Icon(Icons.home, color: Colors.white),
           onPressed: () {
             Navigator.push(
               context,
@@ -242,12 +256,12 @@ class PracticePage extends StatelessWidget {
           },
         ),
         IconButton(
-          icon: Icon(Icons.chat, color: Colors.white),
+          icon: const Icon(Icons.chat, color: Colors.white),
           onPressed: () {
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(builder: (context) => ChatPage()),
-            // );
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const ChatPage()),
+            );
           },
         ),
       ],

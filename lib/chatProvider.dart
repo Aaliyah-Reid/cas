@@ -20,9 +20,15 @@ class ChatProvider extends ChangeNotifier {
 
   final List<types.Message> messages = [];
   final auth = GetIt.I.get<Auth>();
+  String context = "";
 
   bool q = false;
 
+
+  void unsubscribe(){
+    print("unsubscrbing");
+    auth.pb.collection("Messages").unsubscribe();
+  }
 
 
   void subscribe(String topic) {
@@ -62,7 +68,7 @@ class ChatProvider extends ChangeNotifier {
   final _user = const types.User(id: '82091008-a484-4a89-ae75-a22bf8d6f3ac');
 
     if(message.text!=""){
-        auth.createMessage(message.text);
+        auth.createMessage(message.text,context);
     }
     final textMessage = types.TextMessage(
       author: _user,

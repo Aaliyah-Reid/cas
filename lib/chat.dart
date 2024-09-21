@@ -24,7 +24,9 @@ String randomString() {
 
 class ChatPage extends StatefulWidget {
 
-  const ChatPage({super.key});
+  final String msgContext;
+
+  const ChatPage({this.msgContext="",super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -36,15 +38,25 @@ class ChatPage extends StatefulWidget {
 class _ChatPageState extends State<ChatPage> {
   final auth = GetIt.I.get<Auth>();
 
-
   @override
   void initState() {
   print("mgmmg");
 
     // TODO: implement initState
     final auth = GetIt.I.get<Auth>();
+    Provider.of<ChatProvider>(context,listen: false).context = widget.msgContext;
+
+
     
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    print("gone");
+
+    super.dispose();
   }
 
  final List<types.Message> _messages = [];
@@ -54,16 +66,21 @@ class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) {
 
-  
     return Scaffold(
-      body: ChangeNotifierProvider(
-        create : (context) => ChatProvider(),
-        child: Consumer<ChatProvider> (
+      appBar: AppBar(
+        leading: IconButton(onPressed: (){
+          print("going back");
+          Provider.of<ChatProvider>(context,listen: false).messages.clear();
+          Navigator.pop(context);
+        }, icon: const Icon(Icons.keyboard_double_arrow_left)),
+      ),
+      body:  Consumer<ChatProvider> (
           builder: (context, chatter , child) {
 
             if(chatter.q==false){
             chatter.subscribe("s");
-
+            chatter.context = widget.msgContext;
+            print(chatter.context);
             }
   
             return Chat(messages: chatter.messages, onSendPressed: chatter.handleSendPressed, user: _user);
@@ -71,12 +88,6 @@ class _ChatPageState extends State<ChatPage> {
 
         )
         
-    ),);
+    );
   }
-
-  
-
- 
- 
-
 }

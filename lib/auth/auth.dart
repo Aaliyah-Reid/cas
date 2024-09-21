@@ -63,10 +63,11 @@ class Auth {
     
   }
 
-  Future<void> createMessage (String message) async {
+  Future<void> createMessage (String message,String context) async {
     final body = <String, dynamic>{
     "sentMsg": message,
-    "receivedMsg": ""
+    "receivedMsg": "",
+    "context" : context
 };
 
 

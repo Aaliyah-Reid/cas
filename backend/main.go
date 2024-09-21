@@ -33,7 +33,16 @@ func main() {
 		if err != nil {
 			return err
 		}
-		endpoint := fmt.Sprintf("http://localhost:5000/%v", e.Record.GetString("sentMsg"))
+
+		var endpoint string
+		context := e.Record.GetString("context")
+
+		if context != "" {
+			endpoint = fmt.Sprintf("http://localhost:5000/chat/situation/%v/%v", context, e.Record.GetString("sentMsg"))
+		} else {
+			endpoint = fmt.Sprintf("http://localhost:5000/%v", e.Record.GetString("sentMsg"))
+
+		}
 		var res Responsed
 
 		resp, err := http.Get(endpoint)
