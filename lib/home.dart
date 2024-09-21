@@ -193,87 +193,168 @@ class HomePage extends StatelessWidget {
                 ),
               ],
             ),
-            // SizedBox(height: 30),
-            // Text(
-            //   'Swipeable Cards (Horizontal Scroll)',
-            //   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
-            // ),
-            // SizedBox(height: 10),
-            // Container(
-            //   height: 120,
-            //   child: ListView(
-            //     scrollDirection: Axis.horizontal,
-            //     children: [
-            //       Card(
-            //         color: Colors.redAccent,
-            //         child: Container(
-            //           width: 120,
-            //           height: 100,
-            //           child: Center(child: Text('Swipe Card 1')),
-            //         ),
-            //       ),
-            //       Card(
-            //         color: Colors.purpleAccent,
-            //         child: Container(
-            //           width: 120,
-            //           height: 100,
-            //           child: Center(child: Text('Swipe Card 2')),
-            //         ),
-            //       ),
-            //       Card(
-            //         color: Colors.tealAccent,
-            //         child: Container(
-            //           width: 120,
-            //           height: 100,
-            //           child: Center(child: Text('Swipe Card 3')),
-            //         ),
-            //       ),
-            //       Card(
-            //         color: Colors.pinkAccent,
-            //         child: Container(
-            //           width: 120,
-            //           height: 100,
-            //           child: Center(child: Text('Swipe Card 4')),
-            //         ),
-            //       ),
-            //     ],
-            //   ),
-            // ),
+            SizedBox(height: 30),
+            Text(
+              'Personalized Picks',
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            ),
+            Text(
+              'Recommendations based on your recent moods',
+              style: TextStyle(fontSize: 14, color: Colors.grey[700]),
+            ),
+            SizedBox(height: 10),
+            Container(
+              height: 150,
+              child: ListView(
+                scrollDirection: Axis.horizontal,
+                children: [
+
+                  Column(
+                    children: [
+                      Card(
+                        color: Colors.green[200],
+                        child: Container(
+                          width: 120,
+                          height: 100,
+                          //child: Center(child: Text('Swipe Card 1')),
+                          child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  'assets/home1.png',
+                                  height: 90,
+                                ),
+                              ],
+                        ),
+                      ),
+                      ),
+                      Text('Turn procastination \ninto action',
+                      style:TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Card(
+                        color: Colors.pink[50],
+                        child: Container(
+                          width: 120,
+                          height: 100,
+                          child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  'assets/home2.png',
+                                  height: 90,
+                                ),
+                              ],
+                        ),
+                        ),
+                      ),
+                      Text('Finding your calm in \nchaos',
+                      style:TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Card(
+                        color: Colors.lightBlue[100],
+                        child: Container(
+                          width: 120,
+                          height: 100,
+                          child: Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.asset(
+                                  'assets/home3.png',
+                                  height: 90,
+                                ),
+                              ],
+                        ),
+                        ),
+                      ),
+                      Text('Booster',
+                      style:TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+                    ],
+                  ),
+                  Column(
+                    children: [
+                      Card(
+                        color: Colors.deepOrange[100],
+                        child: Container(
+                          width: 120,
+                          height: 100,
+                          child: Center(child: Text('Swipe Card 4')),
+                        //   child: Column(
+                        //       mainAxisAlignment: MainAxisAlignment.center,
+                        //       children: [
+                        //         Image.asset(
+                        //           'assets/home1.png',
+                        //           height: 90,
+                        //         ),
+                        //       ],
+                        // ),
+                        ),
+                      ),
+                      Text('Turn procastination \ninto action',
+                      style:TextStyle(fontSize: 12, fontWeight: FontWeight.bold)),
+                    ],
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
-      bottomNavigationBar: BottomAppBar(
-  child: Container(
-    height: 60.0,
-    decoration: BoxDecoration(
-      color: Colors.blue[700],
-      borderRadius: BorderRadius.circular(30.0),
-    ),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: <Widget>[
-        IconButton(
-          icon: Icon(Icons.home, color: Colors.white),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => HomePage()),
-            );
-          },
+        bottomNavigationBar: BottomAppBar(
+        child: Align(
+          alignment: Alignment.bottomCenter,
+          child: Container(
+            height: 200.0,
+            width: 200.0, // Adjust the width to make the nav bar smaller
+            margin: EdgeInsets.all(10.0), // Add margin to ensure the oval shape is visible
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(30.0), // Apply the same radius to all corners
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black26,
+                  blurRadius: 10,
+                  offset: Offset(0, 5),
+                ),
+              ],
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                IconButton(
+                  icon: Icon(Icons.home_outlined),
+                  onPressed: () {
+                    // Handle home button press
+                  },
+                ),
+                IconButton(
+                  icon: Icon(Icons.search),
+                  onPressed: () {
+                    // Handle search button press
+                  },
+                ),
+                IconButton(
+                  icon: Icon(Icons.bookmark_border),
+                  onPressed: () {
+                    // Handle bookmark button press
+                  },
+                ),
+                IconButton(
+                  icon: Icon(Icons.person_outline),
+                  onPressed: () {
+                    // Handle profile button press
+                  },
+                ),
+              ],
+            ),
+          ),
         ),
-        IconButton(
-          icon: Icon(Icons.chat, color: Colors.white),
-          onPressed: () {
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(builder: (context) => ChatPage()),
-            // );
-          },
-        ),
-      ],
-    ),
-  ),
-),
+      ),
     );
   }
 }
