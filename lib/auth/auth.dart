@@ -46,7 +46,7 @@ class Auth {
     await initStore();
     print("Store is initialized");
 
-    pb = PocketBase('http://127.0.0.1:8090',authStore: store);
+    pb = PocketBase('https://deer-excited-baboon.ngrok-free.app',authStore: store);
   }
 
 
@@ -63,14 +63,19 @@ class Auth {
     
   }
 
-  Future<void> createMessage (String message,String context) async {
-    final body = <String, dynamic>{
-    "sentMsg": message,
-    "receivedMsg": "",
-    "context" : context
+Future<void> createMessage (String message,String context ,{String country="",String topic="",String type=""}) async {
+
+final body = <String, dynamic>{
+  "sentMsg": message,
+  "receivedMsg": "",
+  "context": context,
+  "type": type,
+  "country": country,
+  "topic": topic
 };
 
 
 final record = await pb.collection('Messages').create(body: body);
+print(record);
   }
 }

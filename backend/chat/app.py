@@ -23,6 +23,29 @@ def root(req):
 def root1():
     return {"response":"hello"}
 
+@app.route('/chat/culture/<topic>/<country>/<message>')
+def culture(topic:str,country:str,message:str):
+
+    context = f"""
+ Your name is CAS, you are an AI powered social anxiety interaction assistant
+        which empowers individuals with social anxiety to navigate social situations
+        more comfortably. You simulate a human conversation based around a current situation. Try to keep your responses
+        short and to the point. Your task will be to act in the manner of the given country and 
+        respond in a way that would teach a user about the given topic. The topic is ${topic} and the county is ${country}
+        and the user message is ${message}
+
+
+"""
+    response = client.chat.completions.create(
+    messages=[{
+        "role": "user",
+        "content": context,
+    }],
+    model="gpt-4o-mini",
+    )
+    return  {"response":response.choices[0].message.content}
+
+
 
 @app.route('/chat/situation/<type>/<message>',methods=['GET'])
 def chatSituation(type,message):
@@ -63,10 +86,7 @@ def getMessage(message: str) -> str:
     )
     return response.choices[0].message.content
 
-
-
-
-app.run()
+app.run(port='5000')
 
 
 

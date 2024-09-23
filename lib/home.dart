@@ -1,8 +1,10 @@
+import 'package:cas/chat.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:cas/onboarding.dart';
 import 'package:cas/practice.dart';
 import 'package:cas/cultural.dart';
+import 'package:toastification/toastification.dart';
 
 class HomePage extends StatelessWidget {
   @override
@@ -12,7 +14,7 @@ class HomePage extends StatelessWidget {
         leading: IconButton(
           icon: Icon(Icons.menu),
           onPressed: () {
-            Navigator.pop(context);
+            // Navigator.pop(context);
           },
         ),
         title: Row(
@@ -56,7 +58,12 @@ class HomePage extends StatelessWidget {
                 child: SizedBox(
                   width: 300, // Set the desired width here
                   child: ElevatedButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      toastification.show(
+                        title: const Text('Coming Soon!'),
+                        autoCloseDuration: const Duration(seconds: 1),
+                      );
+                    },
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue[700],
                       shape: RoundedRectangleBorder(
@@ -334,24 +341,26 @@ class HomePage extends StatelessWidget {
                     // Handle home button press
                   },
                 ),
+                // IconButton(
+                //   icon: Icon(Icons.search),
+                //   onPressed: () {
+                //     // Handle search button press
+                //   },
+                // ),
                 IconButton(
-                  icon: Icon(Icons.search),
+                  icon: Icon(Icons.chat),
                   onPressed: () {
-                    // Handle search button press
-                  },
-                ),
-                IconButton(
-                  icon: Icon(Icons.bookmark_border),
-                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>const ChatPage()));
+
                     // Handle bookmark button press
                   },
                 ),
-                IconButton(
-                  icon: Icon(Icons.person_outline),
-                  onPressed: () {
-                    // Handle profile button press
-                  },
-                ),
+                // IconButton(
+                //   icon: Icon(Icons.person_outline),
+                //   onPressed: () {
+                //     // Handle profile button press
+                //   },
+                // ),
               ],
             ),
           ),

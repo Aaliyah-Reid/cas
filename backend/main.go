@@ -36,9 +36,14 @@ func main() {
 
 		var endpoint string
 		context := e.Record.GetString("context")
+		Mtype := e.Record.GetString("type")
 
-		if context != "" {
+		if context != "" && Mtype == "" {
 			endpoint = fmt.Sprintf("http://localhost:5000/chat/situation/%v/%v", context, e.Record.GetString("sentMsg"))
+		} else if Mtype == "culture" {
+			fmt.Println("cultrue detected")
+			endpoint = fmt.Sprintf("http://localhost:5000/chat/culture/%v/%v/%v", e.Record.GetString("context"), e.Record.GetString("country"), e.Record.GetString("sentMsg"))
+			fmt.Println(endpoint)
 		} else {
 			endpoint = fmt.Sprintf("http://localhost:5000/%v", e.Record.GetString("sentMsg"))
 

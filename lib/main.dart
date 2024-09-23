@@ -2,6 +2,7 @@ import 'dart:ffi';
 
 import 'package:cas/chat.dart';
 import 'package:cas/home.dart';
+import 'package:cas/login.dart';
 import 'package:cas/sign_up.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -54,7 +55,7 @@ class MyApp extends StatelessWidget {
             colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
             useMaterial3: true,
           ),
-          home: HomePage()
+          home: GetIt.I.get<Auth>().pb.authStore.isValid ? HomePage() : LoginPage()
       ),
     );
   }

@@ -25,8 +25,11 @@ String randomString() {
 class ChatPage extends StatefulWidget {
 
   final String msgContext;
+  final String type;
+  final String country;
+  final String topic;
 
-  const ChatPage({this.msgContext="",super.key});
+  const ChatPage({this.msgContext="",this.country="",this.topic="",this.type="",super.key});
 
   @override
   State<StatefulWidget> createState() {
@@ -45,8 +48,8 @@ class _ChatPageState extends State<ChatPage> {
     // TODO: implement initState
     final auth = GetIt.I.get<Auth>();
     Provider.of<ChatProvider>(context,listen: false).context = widget.msgContext;
-
-
+    Provider.of<ChatProvider>(context,listen: false).country = widget.country;
+    Provider.of<ChatProvider>(context,listen: false).type = widget.type;
     
     super.initState();
   }
@@ -65,7 +68,6 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context) {
-
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(onPressed: (){

@@ -21,6 +21,15 @@ class ChatProvider extends ChangeNotifier {
   final List<types.Message> messages = [];
   final auth = GetIt.I.get<Auth>();
   String context = "";
+  String country = "";
+  String type = "";
+
+
+  void reset(){
+    context = "";
+    country = "";
+    type = "";
+  }
 
   bool q = false;
 
@@ -38,7 +47,6 @@ class ChatProvider extends ChangeNotifier {
       (e) {
 
         if(e.record!.getDataValue("receivedMsg")!=""){
-           print(e.record!.getDataValue("receivedMsg"));
 
         final textMessage = types.TextMessage(
       author: _chatbbot,
@@ -46,11 +54,8 @@ class ChatProvider extends ChangeNotifier {
       id: randomString(),
       text: e.record!.getDataValue("receivedMsg"),
     );
-
-
         messages.insert(0, textMessage);
         notifyListeners();
-
 
         }
        
@@ -58,17 +63,14 @@ class ChatProvider extends ChangeNotifier {
     );
   }
 
-  void s() {
-    print("Hello");
-  }
-
   // void answer 
 
   void handleSendPressed(types.PartialText message) {
-  final _user = const types.User(id: '82091008-a484-4a89-ae75-a22bf8d6f3ac');
+  const _user =  types.User(id: '82091008-a484-4a89-ae75-a22bf8d6f3ac');
 
     if(message.text!=""){
-        auth.createMessage(message.text,context);
+      print(country);
+        auth.createMessage(message.text,context,country: country,type: type);
     }
     final textMessage = types.TextMessage(
       author: _user,

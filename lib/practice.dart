@@ -2,6 +2,7 @@ import 'package:cas/chat.dart';
 import 'package:flutter/material.dart';
 import 'package:cas/home.dart';
 class PracticePage extends StatelessWidget {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,56 +35,6 @@ class PracticePage extends StatelessWidget {
                   'Select your options to create a \nscenario for your social practice.',
                   style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color:Colors.blue[700]),
                 ),
-              ),
-              SizedBox(height: 40),
-              Center(
-                child: Text(
-                  'Conversation Type',
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
-                ),
-              ),
-              SizedBox(height: 10),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Expanded(
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue[700],
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                        ),
-                      ),
-                      child: Text(
-                        'One-on-One',
-                        style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                      ),
-                    ),
-                  ),
-                  SizedBox(width: 20),
-                  Expanded(
-                    child: ElevatedButton(
-                      onPressed: () {},
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.blue[700],
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                        ),
-                      ),
-                      child: const Text(
-                        'Group',
-                        style: TextStyle(
-                            fontSize: 15,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.white),
-                      ),
-                    ),
-                  ),
-                ],
               ),
              const  SizedBox(height: 30),
               const Center(
@@ -209,65 +160,64 @@ class PracticePage extends StatelessWidget {
                       decorationColor: Colors.blue[700]),
                 ),
               ),
-              SizedBox(height: 20),
-              // Center(
-              //   child: SizedBox(
-              //     width: 300, // Set the desired width here
-              //     child: ElevatedButton(
-              //       onPressed: () {},
-              //       style: ElevatedButton.styleFrom(
-              //         backgroundColor: Colors.blue[700],
-              //         shape: RoundedRectangleBorder(
-              //           borderRadius: BorderRadius.circular(30.0),
-              //         ),
-              //       ),
-              //       child: Text(
-              //         "Let's Practise!",
-              //         style: TextStyle(
-              //           fontSize: 20,
-              //           fontWeight: FontWeight.bold,
-              //           color: Colors.white,
-              //         ),
-              //       ),
-              //     ),
-              //   ),
-              // ),
+              const SizedBox(height: 20),
+  
             ],
           ),
         ),
       ),
       bottomNavigationBar: BottomAppBar(
-  child: Container(
-    height: 60.0,
-    decoration: BoxDecoration(
-      color: Colors.blue[700],
-      borderRadius: BorderRadius.circular(30.0),
-    ),
-    child: Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: <Widget>[
-        IconButton(
-          icon: const Icon(Icons.home, color: Colors.white),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => HomePage()),
-            );
-          },
+        child: Align(
+          alignment: Alignment.bottomCenter,
+          child: Container(
+            height: 200.0,
+            width: 200.0, // Adjust the width to make the nav bar smaller
+            margin: EdgeInsets.all(10.0), // Add margin to ensure the oval shape is visible
+            decoration: BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.circular(30.0), // Apply the same radius to all corners
+              boxShadow: [
+                BoxShadow(
+                  color: Colors.black26,
+                  blurRadius: 10,
+                  offset: Offset(0, 5),
+                ),
+              ],
+            ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <Widget>[
+                IconButton(
+                  icon: Icon(Icons.home_outlined),
+                  onPressed: () {
+                    // Handle home button press
+                  },
+                ),
+                // IconButton(
+                //   icon: Icon(Icons.search),
+                //   onPressed: () {
+                //     // Handle search button press
+                //   },
+                // ),
+                IconButton(
+                  icon: Icon(Icons.chat),
+                  onPressed: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (context)=>const ChatPage()));
+
+                    // Handle bookmark button press
+                  },
+                ),
+                // IconButton(
+                //   icon: Icon(Icons.person_outline),
+                //   onPressed: () {
+                //     // Handle profile button press
+                //   },
+                // ),
+              ],
+            ),
+          ),
         ),
-        IconButton(
-          icon: const Icon(Icons.chat, color: Colors.white),
-          onPressed: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const ChatPage()),
-            );
-          },
-        ),
-      ],
-    ),
-  ),
-),
+      ),
     );
   }
 }

@@ -41,6 +41,7 @@ dependencies:
   pocketbase: ^0.18.1
   shared_preferences: ^2.3.2
   toastification: ^2.3.0
+  dropdown_search: ^6.0.1
   
 
 dev_dependencies:
