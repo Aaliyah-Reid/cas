@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:cas/onboarding.dart';
 import 'package:cas/practice.dart';
 import 'package:cas/cultural.dart';
-
+import 'package:cas/stress.dart';
 class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -86,10 +86,10 @@ class HomePage extends StatelessWidget {
                   Expanded(
                     child: GestureDetector(
                       onTap: () {
-                        // Navigator.push(
-                        //   context,
-                        //   MaterialPageRoute(builder: (context) => DetailPage()),
-                        // );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => StressPage()),
+                        );
                       },
                       child: Card(
                         child: Container(

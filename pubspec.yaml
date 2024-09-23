@@ -41,11 +41,11 @@ dependencies:
   pocketbase: ^0.18.1
   shared_preferences: ^2.3.2
   toastification: ^2.3.0
-  
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+    
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

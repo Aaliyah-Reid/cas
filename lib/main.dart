@@ -11,6 +11,7 @@ import 'package:get_it/get_it.dart';
 import 'package:toastification/toastification.dart';
 import 'package:provider/provider.dart';
 import 'package:cas/chatProvider.dart';
+
 final getIt = GetIt.instance;
 
 void main() async{
